@@ -151,8 +151,8 @@ def attributingRe(cfg, externs_eas, ea_externs):  #为每个基本块生成自�
 		cfg.node[node_id]['externs'] = externs
 		numTIs = calTransferIns(bl) # No. of Transfer Instruction
 		cfg.node[node_id]['numTIs'] = numTIs
-		rawInsts = rawInsts
-		cfg.node[node_id]['RawInsts']=rawInsts
+		ints = rawInsts(bl)
+		cfg.node[node_id]['rawInsts']=ints
 	return cfg
 
 	

@@ -32,8 +32,8 @@ class raw_graph:
 			fvector = self.retrieveVec(node, self.old_g)
 			self.g.add_node(node)
 			self.g.node[node]['v'] = fvector
-			self.g.node[node]['rawInsts']=self.old_g[node]['rawInsts']
-
+			old = self.old_g.node[node]['rawInsts']
+			self.g.node[node]['rawInsts']=old
 		for edge in self.old_g.edges():
 			node1 = edge[0]
 			node2 = edge[1]
@@ -80,7 +80,6 @@ class raw_graph:
 		feature_vec.append(insts)
 		# of TIs7
 		insts = g.node[id_]['numTIs']
-		print(insts)
 		feature_vec.append(insts)	
 		return feature_vec
 
