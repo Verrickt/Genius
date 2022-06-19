@@ -80,6 +80,7 @@ class raw_graph:
 		feature_vec.append(insts)
 		# of TIs7
 		insts = g.node[id_]['numTIs']
+		print(insts)
 		feature_vec.append(insts)	
 		return feature_vec
 
