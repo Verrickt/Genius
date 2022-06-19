@@ -170,6 +170,17 @@ def calCalls(bl):
 		inst_addr = NextHead(inst_addr)
 	return invoke_num
 
+def rawInsts(bl):
+	insts = []
+	start = bl[0]
+	end = bl[1]
+	inst_addr = start
+	while inst_addr < end:
+		inst = GetDisasm(inst_addr)
+		insts.append(inst)
+		inst_addr = NextHead(inst_addr)
+	return insts
+
 def calInsts(bl):
 	start = bl[0]
 	end = bl[1]

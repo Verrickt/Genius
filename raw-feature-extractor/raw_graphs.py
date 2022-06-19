@@ -32,6 +32,7 @@ class raw_graph:
 			fvector = self.retrieveVec(node, self.old_g)
 			self.g.add_node(node)
 			self.g.node[node]['v'] = fvector
+			self.g.node[node]['rawInsts']=self.old_g[node]['rawInsts']
 
 		for edge in self.old_g.edges():
 			node1 = edge[0]
