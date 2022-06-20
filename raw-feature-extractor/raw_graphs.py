@@ -58,27 +58,35 @@ class raw_graph:
 	def retrieveVec(self, id_, g):
 		feature_vec = []
 		#numC0
+		#num of constants
 		numc = g.node[id_]['consts']
 		feature_vec.append(numc)
 		#nums1
+		#string constants
 		nums = g.node[id_]['strings']
 		feature_vec.append(nums)
 		#offsprings2
+		#offstring
 		offs = g.node[id_]['offs']
 		feature_vec.append(offs)
 		#numAs3
+		#Arithmetic instructions
 		numAs = g.node[id_]['numAs']
 		feature_vec.append(numAs)
 		# of calls4
+		# Call instructions
 		calls = g.node[id_]['numCalls']
 		feature_vec.append(calls)
 		# of insts5
+		# No of instructions
 		insts = g.node[id_]['numIns']
 		feature_vec.append(insts)
 		# of LIs6
+		# Logical instructions, ignorable
 		insts = g.node[id_]['numLIs']
 		feature_vec.append(insts)
 		# of TIs7
+		# transfer instruction
 		insts = g.node[id_]['numTIs']
 		feature_vec.append(insts)	
 		return feature_vec
@@ -183,7 +191,7 @@ class raw_graph:
 			tg.updateG(fang, indexes, self.g)
 			return tg
 		pdb.set_trace()
-		print "there is g which is none"
+		# print "there is g which is none"
 
 	def createG(self, binary_str, n):
 		g = nx.DiGraph()
