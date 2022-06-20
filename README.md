@@ -1,5 +1,23 @@
 # Genius
  
+
+## Compile openSSL
+
+
+For optimization level: change the CFLAGS in makefile
+
+### ARM
+sudo apt-get install gcc-arm-linux-gnueabihf
+./Configure linux-generic32 --cross-compile-prefix=arm-linux-gnueabihf-
+
+### MIPS
+sudo apt-get install gcc-mips-linux-gnu
+./Configure linux-generic32 --cross-compile-prefix=mips-linux-gnu-
+
+### i386
+./Configure linux-generic32
+
+
 ## About
 The project is an complete implementation of Genius, a framework for binary similarity detection.
 
