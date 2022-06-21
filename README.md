@@ -15,8 +15,11 @@ sudo apt-get install gcc-mips-linux-gnu
 ./Configure linux-generic32 --cross-compile-prefix=mips-linux-gnu-
 
 ### i386
-./Configure linux-generic32
+./config
 
+sudo ln -s /usr/include/asm-generic /usr/include/asm
+
+./Configure -m32 linux-generic32
 
 ## About
 The project is an complete implementation of Genius, a framework for binary similarity detection.
