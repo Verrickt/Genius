@@ -8,15 +8,16 @@ results = []
 import tqdm
 
 def generate_dataset(prefix,baseDir):
+    res = []
     files = glob.glob(baseDir+r'\*.cfg')
     for path in tqdm.tqdm(files):
         with open(path, 'r') as input:
             g = pickle.load(input)
             for i in range(len(g.raw_graph_list)):
-                handle_graph(g, g.raw_graph_list[i])
-
-    with open(r'C:\Users\Von\Desktop\New folder (2)'+"\\"+prefix+'.json','w') as output:
-        output.write(str.join('\n',results))
+                handle_graph(g, g.raw_graph_list[i],res)
+    print len(res)
+    with open(r'C:\Users\Von\Desktop\Extracted'+"\\"+prefix+'.json','w') as output:
+        output.write(str.join('\n',res))
 
 
 def handle_graph(gparent,g0,ans):
@@ -52,4 +53,12 @@ def get_features(v):
     return [string_const,num_const,num_transfer,num_call,num_inst,num_arith_inst,off_spring]
 
 
-generate_dataset('arm32',r'C:\Users\Von\Desktop\New folder (2)\extracted-acfg')
+version = ['1.0.1f','1.0.1u']
+arch = ['i386','arm','mips']
+optim = ['O0','O1','O2','O3']
+for v in version:
+    for a in arch:
+        for o in optim:
+            prefix = v+'-'+a+'-'+o
+            generate_dataset(prefix,r'C:\Users\Von\Desktop\Extracted'+'\\'+prefix+'\\')
+
