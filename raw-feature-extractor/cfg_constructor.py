@@ -153,6 +153,8 @@ def attributingRe(cfg, externs_eas, ea_externs):  #为每个基本块生成自�
 		cfg.node[node_id]['numTIs'] = numTIs
 		ints = rawInsts(bl)
 		cfg.node[node_id]['rawInsts']=ints
+		bn = blockName(bl)
+		cfg.node[node_id]['blockName']=bn
 	return cfg
 
 	
