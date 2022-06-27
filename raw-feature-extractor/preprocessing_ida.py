@@ -1,4 +1,5 @@
 #coding:utf-8
+from distutils.sysconfig import PREFIX
 from func import *
 from raw_graphs import *
 import idc
@@ -7,7 +8,7 @@ import idautils
 import os
 import argparse
 
-
+PREFIX = os.environ['PREFIX']
 def parse_command():
 	parser = argparse.ArgumentParser(description='Process some integers.')
 	parser.add_argument("--path", type=str, help="The directory where to store the generated .ida file")
@@ -20,8 +21,10 @@ if __name__ == '__main__':
 	#path = args.path
 
 	print "open a new binary"
-	path = "D:\\Code\\python\\binary_search\\Genius\\Gencoding-master\\raw-feature-extractor\\extracted-acfg"
-	
+	path = "C:\\Users\\Von\\Desktop\\Extracted\\"+PREFIX+"\\"
+	# if not os.path.exists(path):
+    # 	os.makedirs(path)
+	print GetInputFile()
 	analysis_flags = get_inf_attr(idc.INF_AF) # 得到analysis_flags  INF_AF
 	analysis_flags &= ~AF_IMMOFF  # AF_IMMOFF ：将32位的指令操作转换为偏移量
 	# turn off "automatically make offset" heuristic
@@ -31,5 +34,4 @@ if __name__ == '__main__':
 	fullpath = os.path.join(path, binary_name)
 	pickle.dump(cfgs, open(fullpath,'w'))
 	print binary_name
-
 	idc.Exit(0)
