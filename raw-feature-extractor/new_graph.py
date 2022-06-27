@@ -19,23 +19,26 @@ def generate_dataset(prefix,baseDir):
         output.write(str.join('\n',results))
 
 
-def handle_graph(gparent,g0):
+def handle_graph(gparent,g0,ans):
     res = {}
     g = g0.g
     res["n_num"]=len(g)
     succs = []
     features = []
     instructions = []
+    blockNames = []
     res["fname"]=g0.funcname
     for i in range(len(g)):
         succs.append(list(g.successors(i)))
         features.append(get_features(g.node[i]['v']))
         instructions.append(g.node[i]['rawInsts'])
+        blockNames.append(g.node[i]['blockName'])
     res["rawInsts"]=instructions
     res["succs"]=succs
     res["features"]=features
     res["src"]=gparent.binary_name
-    results.append(json.dumps(res))
+    res['blockNames']=blockNames
+    ans.append(json.dumps(res))
 
 
 def get_features(v):

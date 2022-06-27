@@ -34,6 +34,7 @@ class raw_graph:
 			self.g.node[node]['v'] = fvector
 			old = self.old_g.node[node]['rawInsts']
 			self.g.node[node]['rawInsts']=old
+			self.g.node[node]['blockName']=self.old_g.node[node]['blockName']
 		for edge in self.old_g.edges():
 			node1 = edge[0]
 			node2 = edge[1]

@@ -170,6 +170,9 @@ def calCalls(bl):
 		inst_addr = NextHead(inst_addr)
 	return invoke_num
 
+def blockName(bl):
+	return get_name(bl[0])
+
 def rawInsts(bl):
 	insts = []
 	start = bl[0]
